@@ -1,0 +1,29 @@
+﻿@model EmployeeModel
+
+@{
+    ViewData["Title"] = "View employee";
+}
+
+<h2>Employee data</h2>
+
+
+<div>
+    Name:@Model.Name
+</div>
+<div>
+    Surname:@Model.Surname
+</div>
+<div>
+    DoB:@Model.DoB.ToString("dd.MM.yyyy")
+</div>
+<div>
+    Position:@Model.Position
+</div>
+<div>
+    Department:@Model.Department
+</div>
+
+<br />
+<a asp-controller="Employee" asp-action="Index">Back</a>
+</br>
+

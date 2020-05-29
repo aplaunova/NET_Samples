@@ -1,0 +1,45 @@
+﻿@model List<RatingModel>
+@{
+    ViewData["Title"] = "Ratings";
+}
+
+<h2>Ratings list</h2>
+
+<br />
+<a asp-controller="Student" asp-action="Index">Back</a>
+</br>
+
+
+@if (Model.Count > 0)
+{
+
+<table class="table table-striped">
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Course</th>
+        <th>Rating</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+
+    @foreach (var rating in Model)
+    {
+<tr>
+    <td>@rating.Student.Name</td>
+    <td>@rating.Student.Surname</td>
+    <td>@rating.Course.Course</td>
+    <td>@rating.Rating</td>
+    <td>@rating.Description</td>
+    <td><a asp-controller="Rating" asp-action="View" asp-route-id="@rating.Student.Id">View Rating</a></td>
+</tr>
+    }
+
+
+</table>
+}
+
+else
+{ 
+<td>There is no data for this student</td>
+}

@@ -1,0 +1,34 @@
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace UserNews
+{
+    public static class SessionExtension
+    {
+        public static void SetUserName(this ISession session, string username)
+        {
+            session.SetString("username", username);
+        }
+
+        public static string GetUserName(this ISession session)
+        {
+            return session.GetString("username");
+        }
+
+
+        public static void SetIsAdmin(this ISession session, bool isAdmin)
+        {
+            session.SetInt32("isAdmin", isAdmin ? 1 : 0);
+        }
+
+        public static bool GetIsAdmin(this ISession session)
+        {
+            //return session.GetInt32("isAdmin") == 1 ? true : false;
+
+            return session.GetInt32("isAdmin") == 1;
+        }
+    }
+}

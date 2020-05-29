@@ -1,0 +1,18 @@
+﻿@model List<NewsModel>
+
+    <table class="table table-striped">
+        <tr>
+            <th>News</th>
+            <th>News Content</th>
+            <th></th>
+        </tr>
+        @foreach (var cat in Model)
+        {
+            <tr>
+                <td>@cat.Name</td>
+                <td>@cat.Content</td>
+            </tr>
+        }
+    </table>
+
+

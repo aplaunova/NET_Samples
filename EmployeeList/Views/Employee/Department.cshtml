@@ -1,0 +1,24 @@
+﻿@model List<EmployeeModel>
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<h2>List of Departments</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Department Name</th>
+
+    </tr>
+    @foreach (var department in Model)
+    {
+        <tr>
+            <td>@department</td>
+
+        </tr>
+    }
+</table>
+
+<br />
+<a asp-controller="Employee" asp-action="Index">Back</a>
+</br>

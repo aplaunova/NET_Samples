@@ -1,0 +1,24 @@
+﻿@model List<CourseModel>
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h2>Courses list</h2>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>Course Name</th>
+    </tr>
+
+    @foreach (var course in Model)
+    {
+        <tr>
+            <td>@course.Course</td>
+        </tr>
+    }
+
+
+</table>
+
+
