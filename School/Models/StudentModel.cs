@@ -24,13 +24,15 @@ namespace School.Models
         public string Surname { get; set; }
 
         [Display(Name = "Birthday Year: ")]
-        public int BirthdayYear { get; set; }
+        public string BirthdayYear { get; set; }
 
         [Required]
         [Display(Name = "Class: ")]
         [DataType(DataType.Text)]
         [StringLength(3)]
         public string Class { get; set; }
-    
+
+        public double AverageRating { get; set; }
+
     }
 }

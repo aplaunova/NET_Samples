@@ -31,11 +31,15 @@ namespace School.Models
 
         [Required]
         [Display(Name = "Rating: ")]
+        [Range(1,10, ErrorMessage ="Rating is out of interval!")]
         public int Rating {get;set;}
+
 
         [Display(Name = "Description: ")]
         [DataType(DataType.Text)]
         [StringLength(100)]
         public string Description { get; set; }
+
+
     }
 }

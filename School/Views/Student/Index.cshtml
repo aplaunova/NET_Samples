@@ -22,7 +22,8 @@
     <td>@student.Surname</td>
     <td>@student.BirthdayYear</td>
     <td>@student.Class</td>
-    <td><a asp-controller="Rating" asp-action="Index" asp-route-id="@student.Id">Student Rating</a></td>
+    <td><a asp-controller="Rating" asp-action="List" 
+           asp-route-name="@student.Name" asp-route-surname="@student.Surname">Student Rating</a></td>
 </tr>
     }
 

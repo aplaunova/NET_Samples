@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using School.Logic;
 using School.Models;
 
 namespace School.Controllers
 {
     public class CourseController : Controller
     {
-        public static List<CourseModel> Courses = new List<CourseModel>();
 
         public IActionResult Index()
         {
-            var model = Courses.OrderBy(c => c.Course).ToList();
 
-            return View(model);
+                var model = CourseManager.GetAll().Select(c => c.ToModel()).ToList();
+
+                return View(model);
+            
         }
 
         [HttpGet]
@@ -32,12 +34,9 @@ namespace School.Controllers
         {
             if (ModelState.IsValid)
             {
-                //saglabasan
-                model.Id = Courses.Count + 1;
-                Courses.Add(model);
+            CourseManager.Add(model.Course);
 
-                //pareja uz sarakstu
-                return RedirectToAction("Index");
+            return RedirectToAction("Index");
             }
 
             return View(model);

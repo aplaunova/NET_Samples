@@ -3,20 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using School.Logic;
 using School.Models;
 
 namespace School.Controllers
 {
     public class StudentController : Controller
     {
-        public static List<StudentModel> Students = new List<StudentModel>();
         
         public IActionResult Index()
-        {
-            var model = Students.OrderBy(c => c.Surname).ThenBy(c=>c.Name).ToList();
+        {        
+                var model = StudentManager.GetAll().Select(c => c.ToModel()).ToList();
+                
+                return View(model);
             
-            return View(model);
         }
+
+        public IActionResult Average()
+        {
+
+            var student = StudentManager.GetAll().Select(c => c.ToModel()).ToList();
+
+                foreach (var stu in student)
+                {
+                stu.AverageRating = StudentManager.AverageRating();
+                }
+
+                return View(student);
+        }
+
 
         [HttpGet]
         public IActionResult Add()
@@ -32,11 +47,8 @@ namespace School.Controllers
         {
             if (ModelState.IsValid)
             {
-                //saglabasan
-                model.Id = Students.Count + 1;
-                Students.Add(model);
+                StudentManager.Add(model.Name, model.Surname, model.BirthdayYear, model.Class);
 
-                //pareja uz sarakstu
                 return RedirectToAction("Index");
             }
 
